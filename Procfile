@@ -1,2 +1,2 @@
-web: node index.js
+sink: node index.js
 
