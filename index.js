@@ -20,6 +20,7 @@ redisClient.on("pmessage", function (pattern, channel, message) {
   // console.log("Message: ", message);
   var msg = JSON.parse(message);
   var data = {
+    channel: channel,
     model: model,
     action: action,
     message: msg
