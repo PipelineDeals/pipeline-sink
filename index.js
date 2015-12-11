@@ -26,7 +26,10 @@ redisClient.on("pmessage", function (pattern, channel, message) {
   };
 
   kinesis.putRecord(params, function(err, data) {
-    if (err) console.log(err, err.stack); // an error occurred
+    if (err) {
+      console.log('Error on channel: ' + channel);
+      console.log(err, err.stack);
+    }
     // else     console.log(data);           // successful response
   });
 });
