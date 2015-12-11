@@ -12,15 +12,21 @@ redisClient.on("ready", function () {
 });
 
 redisClient.on("pmessage", function (pattern, channel, message) {
-  // var c = channel.split(":");
-  // var model = c[0];
-  // var action = c[1];
+  var c = channel.split(":");
+  var model = c[0];
+  var action = c[1];
   // console.log("Model: ", model);
   // console.log("Action: ", action);
   // console.log("Message: ", message);
+  var msg = JSON.parse(message);
+  var data = {
+    model: model,
+    action: action,
+    message: msg
+  }
 
   var params = {
-    Data: message, /* required */
+    Data: JSON.stringify(data), /* required */
     PartitionKey: channel, /* required */
     StreamName: 'mantle', /* required */
   };
